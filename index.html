@@ -2,11 +2,665 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="edubcss.css">
-<link rel="stylesheet" href="moley.css">
-<link rel="stylesheet" href="modal.css">
+<style>
+.col,
+.half,
+.third,
+.twothird,
+.threequarter,
+.quarter {
+  float:left;
+  width:100%
+}
+
+.container {
+  padding:0.01em 16px;
+}
+
+.container:after,
+.container:before,
+.row:after,
+.row:before,
+.row-sb:after,
+.row-sb:before{
+  content:"";
+  display:table;
+  clear:both
+}
+
+.row-sb {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-nowrap{
+  display: flex;
+  flex-wrap: no-wrap;
+}
+
+.col.c12{width:8.33333%}
+.col.c11{width:8.72%}  
+.col.c10{width:9.6%}  
+.col.c9{width:10.6%}
+.col.c8{width:12%}  
+.col.c7{width:13.71%}  
+.col.c6{width:16%}  
+.col.c5{width:19.2%}
+.col.c4{width:24%}  
+.col.c3{width:32%}  
+.col.c2{width:48.53%}  
+.col.c1{width:97.3%}
+
+.offset12{margin-left:8.33333%}
+.offset11{margin-left:8.72%}  
+.offset10{margin-left:9.6%}  
+.offset9{margin-left:10.6%}
+.offset8{margin-left:12%}  
+.offset7{margin-left:13.71%}  
+.offset6{margin-left:16%}  
+.offset5{margin-left:19.2%}
+.offset4{margin-left:24%}  
+.offset3{margin-left:32%}  
+.offset2{margin-left:48.53%}  
+.offset1{margin-left:97.3%}
+
+.p-v16 {
+  padding: 16px 0px 16px 0px;
+} 
+
+.p-h16 {
+  padding: 0px 16px 0px 16px;
+}
+
+.p-b16 {
+  padding: 16px;
+}
+
+.p-v32 {
+  padding: 32px 0px 32px 0px;
+} 
+
+.p-h32 {
+  padding: 0px 32px 0px 32px;
+}
+
+.p-b32 {
+  padding: 32px;
+}
+
+.m-v8 {
+  margin: 8px 0 8px 0;                     
+}   
+
+.m-h8 {
+  margin: 0 8px 0 8px;                     
+} 
+
+.m-b8 {
+  margin: 8px;                     
+}  
+
+.m-v16 {
+  margin: 16px 0 16px 0;                     
+} 
+
+.m-h16 {
+  margin: 0 16px 0 16px;                     
+} 
+  
+.m-b16 {
+  margin: 16px;                     
+} 
+
+.m-v32 {
+  margin: 32px 0 32px 0;                     
+} 
+
+.m-h32 {
+  margin: 0 32px 0 32px;                     
+} 
+  
+.m-b32 {
+  margin: 32px;                     
+} 
+
+.btn-green {
+  min-width: 130px;
+  height: 40px;
+  color: #46ff09;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  z-index: 0;
+  overflow: hidden;
+  border: 2px solid #46ff09;
+}
+
+.btn-green:hover {
+  color: #fff;
+}
+
+.btn-green:hover:after {
+  width: 100%;
+}
+
+.btn-green:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #46ff09;
+}
+
+.btn-red {
+  min-width: 130px;
+  height: 40px;
+  color: #e86a6a;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  z-index: 0;
+  overflow: hidden;
+  border: 2px solid #e86a6a;
+}
+
+.btn-red:hover {
+  color: #fff;
+}
+
+.btn-red:hover:after {
+  width: 100%;
+}
+
+.btn-red:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #e86a6a;
+}
+
+.btn-blue {
+  min-width: 130px;
+  height: 40px;
+  color: #2c0b8e;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  z-index: 0;
+  overflow: hidden;
+  border: 2px solid #2c0b8e;
+}
+
+.btn-blue:hover {
+  color: #fff;
+}
+
+.btn-blue:hover:after {
+  width: 100%;
+}
+
+.btn-black {
+  min-width: 130px;
+  height: 40px;
+  color: #000000;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  z-index: 0;
+  overflow: hidden;
+  border: 2px solid #000000;
+}
+
+.btn-black:hover {
+  color: #fff;
+}
+
+.btn-black:hover:after {
+  width: 100%;
+}
+
+.btn-black:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #000000;
+}
+
+.dubspin {
+  animation:dubspin 2s infinite linear
+}
+
+@keyframes dubspin {
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(359deg)}
+}
+
+.anifading {
+  animation:fading 10s infinite
+}
+
+@keyframes fading {
+  0%{opacity:0}
+  50%{opacity:1}
+  100%{opacity:0}
+}
+
+.aniopacity {
+  animation:opac 0.8s
+}
+
+@keyframes opac {
+  from{opacity:0} 
+  to{opacity:1}
+}
+
+.anitop {
+  position:relative;
+  animation:animatetop 0.4s
+}
+
+@keyframes animatetop {
+  from{top:-300px;opacity:0} 
+  to{top:0;opacity:1}
+}
+
+.anileft {
+  position:relative;
+animation:animateleft 0.4s;
+}
+
+@keyframes animateleft {
+  from{left:-300px;opacity:0} 
+  to{left:0;opacity:1}
+}
+
+.aniright {
+  position:relative;
+  animation:animateright 0.4s;
+}
+
+@keyframes animateright {
+  from{right:-300px;opacity:0} 
+  to{right:0;opacity:1}
+}
+
+.anibottom {
+  position:relative;
+  animation:animatebottom 0.4s;
+}
+
+@keyframes animatebottom {
+  from{bottom:-300px;opacity:0} 
+  to{bottom:0;opacity:1}
+}
+
+.anizoom {
+  animation:animatezoom 0.6s
+}
+
+@keyframes animatezoom {
+  from{transform:scale(0)} 
+  to{transform:scale(1)}
+}
+
+.aniinput {
+  transition:width 0.4s ease-in-out
+}
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cont {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-rows: .8fr .8fr 2fr .8fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". head head head ."
+    "nav nav nav nav nav"
+    ". game game game ."
+    ". . . . ."; 
+}
+.game {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  grid-gap: 17px 17px; 
+  grid-template-areas: 
+    "seven eight nine"
+    "four five six"
+    "one two three"; 
+  justify-items: center; 
+  align-items: center; 
+  border: 4px double black;
+  border-radius: 15px;
+  padding: 30px 30px;
+  grid-area: game; 
+  min-width: 555px;
+}
+.seven { grid-area: seven; }
+.eight { grid-area: eight; }
+.nine { grid-area: nine; }
+.four { grid-area: four; }
+.five { grid-area: five; }
+.six { grid-area: six; }
+.one { grid-area: one; }
+.two { grid-area: two; }
+.three { grid-area: three; }
+.head {
+  justify-self: stretch;
+  align-self: center; 
+  grid-area: head; 
+}
+
+.squ { width: 100px; height: 100px; background-color: black; border: 3px solid black; border-radius: 12px; }
+
+.nav {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "nav1 nav3 nav5"
+    "nav2 nav3 nav4"; 
+  grid-area: nav; 
+}
+.nav1 { grid-area: nav1; justify-self:center; }
+.nav2 { grid-area: nav2; justify-self:center; }
+.nav3 { grid-area: nav3; justify-self:center; align-self: center; font-size: 40px; }
+.nav5 { grid-area: nav5; justify-self:center; }
+.nav4 { grid-area: nav4; justify-self:center; }
+
+#demotext {
+  color: #0e8dbc;
+  background: #FFFFFF;
+  text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+  color: #0e8dbc;
+  background: #FFFFFF;
+  font-size: 65px;
+  text-align: center;
+  font-weight: 800;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 660px) {
+  .cont {
+    display: grid; 
+    grid-template-columns: 100%; 
+    height: 600px;
+    grid-template-rows: 120px auto auto auto auto auto 100px 100px 80px; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "head"
+      "nav"
+      "nav"
+      "nav"
+      "nav"
+      "nav"
+      "game"
+      "game"
+      " . ";
+    justify-items: center;
+  }
+
+  .nav {
+    display: grid; 
+    grid-template-columns: auto; 
+    grid-template-rows: 50px 50px 90px 50px 50px; 
+    grid-template-areas: 
+      "nav5"
+      "nav1" 
+      "nav4"
+      "nav3"
+      "nav2"; 
+    align-self: center;
+    grid-area: nav; 
+  }
+  .squ { width: 80px; height: 80px; background-color: black; border: 3px solid black; border-radius: 12px; }
+
+  .game {
+    display: grid; 
+    grid-template-columns: 20% 20% 20%; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 8px 8px; 
+    border: none;
+    grid-template-areas: 
+      "seven eight nine"
+      "four five six"
+      "one two three";
+    justify-content: center;
+    grid-area: game; 
+  }
+
+  .nav1 {
+    justify-self: center; 
+    grid-area: nav1; 
+  }
+  .nav2 {
+    justify-self: center; 
+    grid-area: nav2; 
+  }
+  .nav3 {
+    justify-self: center; 
+    grid-area: nav3; 
+    font-size: 25px;
+  }
+  
+  .nav4 {
+    justify-self: center; 
+    grid-area: nav4; 
+  }
+  .nav5 {
+    justify-self: center; 
+    grid-area: nav5; 
+  }
+
+  #demotext {
+    color: #0e8dbc;
+    background: #FFFFFF;
+    text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+    color: #0e8dbc;
+    background: #FFFFFF;
+    font-size: 50px;
+    text-align: center;
+    font-weight: 700;
+  } 
+
+}
+
+
+@media screen and (max-width: 450px) {
+  .cont {
+    display: grid; 
+    grid-template-columns: 100%; 
+    grid-template-rows: auto auto auto auto auto auto 80px 100px 100px;
+    grid-template-areas: 
+      "head"
+      "nav"
+      "nav"
+      "nav"
+      "nav"
+      "nav"
+      "game"
+      "game"
+      " . ";
+  }
+
+  .nav {
+    display: grid; 
+    grid-template-columns: auto; 
+    grid-template-rows: 50px 50px 70px 50px 50px; 
+    grid-template-areas: 
+      "nav5"
+      "nav1" 
+      "nav4"
+      "nav3"
+      "nav2"; 
+    align-self: center;
+    grid-area: nav; 
+  }
+  .squ { width: 75px; height: 75px; background-color: black; border: 3px solid black; border-radius: 12px; }
+
+  .game {
+    display: grid; 
+    grid-template-columns: 14% 14% 14%; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    border: none;
+    grid-gap: 10px 15px;
+    grid-template-areas: 
+      "seven eight nine"
+      "four five six"
+      "one two three"; 
+    justify-content: center;
+    grid-area: game; 
+  }
+
+  .nav1 {
+    justify-self: center; 
+    grid-area: nav1; 
+  }
+  .nav2 {
+    justify-self: center; 
+    grid-area: nav2; 
+  }
+  .nav3 {
+    justify-self: center; 
+    grid-area: nav3; 
+    font-size: 20px;
+  }
+  .nav4 {
+    justify-self: center; 
+    grid-area: nav4; 
+  }
+  .nav5 {
+    justify-self: center; 
+    grid-area: nav5; 
+  }
+
+  #demotext {
+    color: #0e8dbc;
+    background: #FFFFFF;
+    text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+    color: #0e8dbc;
+    background: #FFFFFF;
+    font-size: 38px;
+    text-align: center;
+    font-weight: 600;
+  } 
+
+  #info {
+    position: absolute;
+    left: 100px;
+    top: 45px;
+    margin-top: 38px;
+    margin-right: 120px;
+  }
+}
+</style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="modal.js"></script>
+<script>
+ var modal = document.getElementById("myModal");
+
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </head>
 <body onkeydown="myFunction(event)">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
